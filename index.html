@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Escaleras</title>
+  <style>
+    /*VARIABLES*/
+    :root {
+      --oscuro: #555555;
+      --claro: #a6a6a6;
+      --blanco: #ffffff;
+
+      /*plano cenital*/
+      --ancho-lado: 325px;
+      --ancho-centro: 150px;
+      --alto-suelo: 180px;
+      --alto-peldano: 75px;
+
+      /*vista de lado*/
+      --ancho: 92px;
+      --alto: 41px;
+    }
+
+    /*AJUSTES GENERALES*/
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Open Sans", Arial, sans-serif;
+      padding: 10px;
+    }
+
+    h2 {
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    /*DIBUJO 1: PLANO CENITAL*/
+    .planta {
+      display: flex;
+      width: calc(2 * var(--ancho-lado) + var(--ancho-centro));
+    }
+
+    .lado   { width: var(--ancho-lado); }
+    .centro { width: var(--ancho-centro); }
+
+    .suelo {
+      height: var(--alto-suelo);
+      background: var(--claro);
+      border: 2px solid var(--blanco);
+      color: var(--blanco);
+      padding: 10px;
+      display: flex;
+      align-items: flex-end;        /* texto abajo */
+    }
+    .suelo.izq { justify-content: flex-start; }
+    .suelo.der { justify-content: flex-end; }
+
+    .peldano {
+      height: var(--alto-peldano);
+      background: var(--oscuro);
+      border: 2px solid var(--blanco);
+      color: var(--blanco);
+      padding-left: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .arriba { display: flex; height: var(--alto-suelo); }
+
+    .fina {
+      width: 50%;
+      height: 100%;
+      background: var(--oscuro);
+      border: 2px solid var(--blanco);
+    }
+
+    .largo {
+      height: calc(4 * var(--alto-peldano));
+      background: var(--oscuro);
+      border: 2px solid var(--blanco);
+    }
+
+    /*DIBUJO 2: VISTA DE LADO*/
+    .lateral {
+      width: 600px;
+      padding-top: calc(4 * var(--alto));   /*4 filas vacias de arriba*/
+      background: var(--claro);
+      border: 2px solid var(--blanco);
+    }
+
+    .escalon {
+      width: var(--ancho);
+      height: var(--alto);
+      margin-left: calc(var(--col) * var(--ancho));
+      background: var(--oscuro);
+      border: 2px solid var(--blanco);
+      color: var(--blanco);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .suelo-lateral {
+      width: calc(100% - 4 * var(--ancho));
+      height: var(--alto);
+      margin-left: calc(4 * var(--ancho));
+      background: var(--blanco);
+      color: black;
+      font-size: 22px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+<body>
+
+  <!--DIBUJO 1-->
+  <h2>PLANO CENITAL DE LAS ESCALERAS<br>(PLANTA 0 Y PLANTA -1)</h2>
+
+  <div class="planta">
+    <div class="lado">
+      <div class="suelo izq">suelo</div>
+      <div class="peldano">peldaño 4 (0)</div>
+      <div class="peldano">peldaño 3 (0)</div>
+      <div class="peldano">peldaño 2 (0)</div>
+      <div class="peldano">peldaño 1 (0)</div>
+    </div>
+
+    <div class="centro">
+      <div class="arriba">
+        <div class="fina"></div>
+        <div class="fina"></div>
+      </div>
+      <div class="largo"></div>
+    </div>
+
+    <div class="lado">
+      <div class="suelo der">suelo</div>
+      <div class="peldano">peldaño 4 (-1)</div>
+      <div class="peldano">peldaño 3 (-1)</div>
+      <div class="peldano">peldaño 2 (-1)</div>
+      <div class="peldano">peldaño 1 (-1)</div>
+    </div>
+  </div>
+
+  <!--DIBUJO 2-->
+  <h2 style="margin-top: 30px;">VISTA DE LADO</h2>
+
+  <div class="lateral">
+    <div class="escalon" style="--col: 0">peldaño 4 (0)</div>
+    <div class="escalon" style="--col: 1">peldaño 3 (0)</div>
+    <div class="escalon" style="--col: 2">peldaño 2 (0)</div>
+    <div class="escalon" style="--col: 3">peldaño 1 (0)</div>
+
+    <div class="suelo-lateral">suelo</div>
+
+    <div class="escalon" style="--col: 3">peldaño 4 (-1)</div>
+    <div class="escalon" style="--col: 2">peldaño 3 (-1)</div>
+    <div class="escalon" style="--col: 1">peldaño 2 (-1)</div>
+    <div class="escalon" style="--col: 0">peldaño 1 (-1)</div>
+  </div>
+
+</body>
+</html>
